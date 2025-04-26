@@ -7,6 +7,12 @@ import { Todo } from './types/todo';
 import { getUserById } from './services/user';
 
 function getNewTodoId(todos: Todo[]): number {
+  if (todos.length === 0) {
+    const RANDOM_ID = +Math.random().toFixed(8).slice(2);
+
+    return RANDOM_ID;
+  }
+
   const maxId = Math.max(...todos.map(todo => todo.id));
 
   return maxId + 1;
